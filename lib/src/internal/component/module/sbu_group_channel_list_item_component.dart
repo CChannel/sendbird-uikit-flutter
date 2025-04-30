@@ -175,44 +175,44 @@ class SBUGroupChannelListItemComponentState
           ? (channel) => onListItemClicked(channel as GroupChannel)
           : null,
       onListItemLongPressed: (channel) async {
-        final groupChannel = channel as GroupChannel;
-        final isPushOff = (groupChannel.myPushTriggerOption ==
-            GroupChannelPushTriggerOption.off);
-        final isPushStatusString = isPushOff
-            ? strings.turnPushNotificationOn
-            : strings.turnPushNotificationOff;
-        await showDialog(
-          context: context,
-          barrierDismissible: true,
-          builder: (context) => SBUDialogMenuComponent(
-            title: widget.getGroupChannelName(channel, strings),
-            buttonNames: [
-              if (!kIsWeb) isPushStatusString,
-              strings.leaveChannel,
-            ],
-            onButtonClicked: (buttonName) async {
-              if (buttonName == isPushStatusString) {
-                runZonedGuarded(() async {
-                  if (isPushOff) {
-                    await groupChannel.setMyPushTriggerOption(
-                        GroupChannelPushTriggerOption.all);
-                  } else {
-                    await groupChannel.setMyPushTriggerOption(
-                        GroupChannelPushTriggerOption.off);
-                  }
-                }, (error, stack) {
-                  // TODO: Check error
-                });
-              } else if (buttonName == strings.leaveChannel) {
-                runZonedGuarded(() async {
-                  await groupChannel.leave();
-                }, (error, stack) {
-                  // TODO: Check error
-                });
-              }
-            },
-          ),
-        );
+        // final groupChannel = channel as GroupChannel;
+        // final isPushOff = (groupChannel.myPushTriggerOption ==
+        //     GroupChannelPushTriggerOption.off);
+        // final isPushStatusString = isPushOff
+        //     ? strings.turnPushNotificationOn
+        //     : strings.turnPushNotificationOff;
+        // await showDialog(
+        //   context: context,
+        //   barrierDismissible: true,
+        //   builder: (context) => SBUDialogMenuComponent(
+        //     title: widget.getGroupChannelName(channel, strings),
+        //     buttonNames: [
+        //       if (!kIsWeb) isPushStatusString,
+        //       strings.leaveChannel,
+        //     ],
+        //     onButtonClicked: (buttonName) async {
+        //       if (buttonName == isPushStatusString) {
+        //         runZonedGuarded(() async {
+        //           if (isPushOff) {
+        //             await groupChannel.setMyPushTriggerOption(
+        //                 GroupChannelPushTriggerOption.all);
+        //           } else {
+        //             await groupChannel.setMyPushTriggerOption(
+        //                 GroupChannelPushTriggerOption.off);
+        //           }
+        //         }, (error, stack) {
+        //           // TODO: Check error
+        //         });
+        //       } else if (buttonName == strings.leaveChannel) {
+        //         runZonedGuarded(() async {
+        //           await groupChannel.leave();
+        //         }, (error, stack) {
+        //           // TODO: Check error
+        //         });
+        //       }
+        //     },
+        //   ),
+        // );
       },
     );
 
